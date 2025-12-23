@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request: # run on all PRs, not just PRs to a particular branch
@@ -11,7 +12,7 @@ env:
 jobs:
   # `basics` includes all non-smoke and non-unit CI
   basics:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, monkci-runners-4vcpu]
     env:
       CHROME_PATH: ${{ github.workspace }}/.tmp/chrome-tot/chrome
       FORCE_COLOR: true
