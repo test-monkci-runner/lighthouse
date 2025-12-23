@@ -1,12 +1,11 @@
 name: Markdown Links Check
 # runs every monday at 9 am
 on:
-  schedule:
-    - cron: "0 9 * * 1"
+  workflow_dispatch:
 
 jobs:
   check-links:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, monkci-runners-4vcpu]
     steps:
       - uses: actions/checkout@v4
       - uses: gaurav-nelson/github-action-markdown-link-check@a996638015fbc9ef96beef1a41bbad7df8e06154
@@ -26,7 +25,7 @@ jobs:
           max-depth: 0
 
   up-to-date-with-chromium:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, monkci-runners-4vcpu]
 
     steps:
     - name: git clone
